@@ -1,6 +1,6 @@
- if($('.page-content-wrapper').hasClass('dashboard_page')) {
+if ($('.page-content-wrapper').hasClass('dashboard_page')) {
     google.charts.load('current', { 'packages': ['corechart'], 'language': 'en' });
- }
+}
 // google.charts.setOnLoadCallback(drawChart);
 $(window).on("throttledresize", function (event) {
     // drawChart();
@@ -10,9 +10,9 @@ $(window).on("throttledresize", function (event) {
 var max_limit = 3; // Max Limit
 $(document).ready(function () {
 
-	if($('#map').length != 0) {
+    if ($('#map').length != 0) {
         getGeojson();
-	}
+    }
 
     /********************** Carousel function **********************/
     $("#myCarousel").carousel("pause");
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
 
 function draw_topfiveSkills_chart(data) {
-    
+
     // Data for skills pie chart
     var skillname = [];
     var skillcount = [];
@@ -78,7 +78,7 @@ function draw_topfiveSkills_chart(data) {
     // Options for skills pie chart
     var options1 = {
         title: 'Top 5 skills as % of registration',
-        titleTextStyle: { 
+        titleTextStyle: {
             color: "#16619c",
             fontSize: 16
         },
@@ -99,28 +99,28 @@ function draw_topfiveSkills_chart(data) {
         }
     };
 
-    
+
     var len = skillcount.length;
-    for(var i=0;i<len;i++) {
-        if(skillcount[i] != 0) {
+    for (var i = 0; i < len; i++) {
+        if (skillcount[i] != 0) {
             // Instantiate and draw skills pie chart, passing in some options.
             var chart1 = new google.visualization.PieChart(document.getElementById('skills-graph'));
             chart1.draw(data1, options1);
             break;
         }
-        else if(i == len - 1) {
+        else if (i == len - 1) {
             document.getElementById('skills-graph').innerHTML = '<div class="noData-graph"><p>No data available</p></div>';
         }
     }
-    
-    
+
+
     function selectHandler() {
         window.location.href = 'skills.html';
     }
 
     // Listen for the 'select' event, and call my function selectHandler() when
     // the user selects something on the chart.
-    if(chart1 != undefined || chart1 != null) {
+    if (chart1 != undefined || chart1 != null) {
         google.visualization.events.addListener(chart1, 'select', selectHandler);
     }
 
@@ -132,14 +132,14 @@ function draw_timebasedUsers_chart(data) {
     var value1 = [];
     var value2 = [];
     var value3 = [];
-    
+
     var api_skills_data = data[0];
     for (var prop in api_skills_data) {
         value1.push(prop);
         value2.push(api_skills_data[prop].verified);
         value3.push(api_skills_data[prop].unVerified);
     }
-    
+
     var data2 = google.visualization.arrayToDataTable([
         ['Days', 'Verified', 'Non verified'],
         [value1[0], value2[0], value3[0]],
@@ -154,7 +154,7 @@ function draw_timebasedUsers_chart(data) {
     // Options for time based line chart
     var options2 = {
         title: 'Verified & Non verified Migrants (Last 7 days)',
-        titleTextStyle: { 
+        titleTextStyle: {
             color: "#16619c",
             fontSize: 16
         },
@@ -175,16 +175,16 @@ function draw_timebasedUsers_chart(data) {
             width: "90%"
         }
     };
-    
+
     var len = value2.length;
-    for(var i=0;i<len;i++) {
-        if(value2[i] != 0 || value3[i] != 0) {
+    for (var i = 0; i < len; i++) {
+        if (value2[i] != 0 || value3[i] != 0) {
             // Instantiate and draw time based line chart, passing in some options.
             var chart2 = new google.visualization.LineChart(document.getElementById('migrants-graph'));
             chart2.draw(data2, options2);
             break;
         }
-        else if(i == len - 1) {
+        else if (i == len - 1) {
             document.getElementById('migrants-graph').innerHTML = '<div class="noData-graph"><p>No data available</p></div>';
         }
     }
@@ -200,7 +200,7 @@ function draw_regModes_chart(data) {
         value1.push(prop);
         value2.push(api_data[prop]);
     }
-    
+
     var data3 = google.visualization.arrayToDataTable([
         ['Registration mode', 'Count'],
         [value1[0], value2[0]],
@@ -212,7 +212,7 @@ function draw_regModes_chart(data) {
 
     var options3 = {
         title: 'Modes of registration',
-        titleTextStyle: { 
+        titleTextStyle: {
             color: "#16619c",
             fontSize: 16
         },
@@ -234,16 +234,16 @@ function draw_regModes_chart(data) {
             width: "90%"
         }
     };
-    
+
     var len = value2.length;
-    for(var i=0;i<len;i++) {
-        if(value2[i] != 0 ) {
+    for (var i = 0; i < len; i++) {
+        if (value2[i] != 0) {
             // Instantiate and draw time based donut chart, passing in some options.
             var chart3 = new google.visualization.PieChart(document.getElementById('reg_modes-graph'));
             chart3.draw(data3, options3);
             break;
         }
-        else if(i == len - 1) {
+        else if (i == len - 1) {
             document.getElementById('reg_modes-graph').innerHTML = '<div class="noData-graph"><p>No data available</p></div>';
         }
     }
@@ -258,7 +258,7 @@ function draw_skillBasedUsers_chart(data) {
     var api_data = data[0];
     for (var prop in api_data) {
         value1.push(prop);
-        var single_data = api_data[prop]; 
+        var single_data = api_data[prop];
         value2.push(single_data.verified);
         value3.push(single_data.unverified);
     }
@@ -274,7 +274,7 @@ function draw_skillBasedUsers_chart(data) {
 
     var options6 = {
         title: 'Top 5 Skills as registrations',
-        titleTextStyle: { 
+        titleTextStyle: {
             color: "#16619c",
             fontSize: 16,
             alignment: 'center'
@@ -300,16 +300,16 @@ function draw_skillBasedUsers_chart(data) {
             width: "90%"
         }
     };
-    
+
     var len = value2.length;
-    for(var i=0;i<len;i++) {
-        if(value2[i] != 0 || value3[i] != 0) {
+    for (var i = 0; i < len; i++) {
+        if (value2[i] != 0 || value3[i] != 0) {
             // Instantiate and draw time based donut chart, passing in some options.
             var chart6 = new google.visualization.ColumnChart(document.getElementById('skillBasedUsers-graph'));
             chart6.draw(data6, options6);
             break;
         }
-        else if(i == len - 1) {
+        else if (i == len - 1) {
             document.getElementById('skillBasedUsers-graph').innerHTML = '<div class="noData-graph"><p>No data available</p></div>';
         }
     }
@@ -327,7 +327,7 @@ function draw_maleUsers_chart(data) {
         value1.push(prop);
         value2.push(api_data[prop]);
     }
-    
+
     var data4 = google.visualization.arrayToDataTable([
         ['State', 'Male Migrants'],
         [value1[0], value2[0]],
@@ -342,7 +342,7 @@ function draw_maleUsers_chart(data) {
 
     var options4 = {
         title: "Top 5 States with Highest Male registration",
-        titleTextStyle: { 
+        titleTextStyle: {
             color: "#16619c",
             fontSize: 16
         },
@@ -366,14 +366,14 @@ function draw_maleUsers_chart(data) {
     };
 
     var len = value2.length;
-    for(var i=0;i<len;i++) {
-        if(value2[i] != 0) {
+    for (var i = 0; i < len; i++) {
+        if (value2[i] != 0) {
             // Instantiate and draw time based column chart, passing in some options.
             var chart4 = new google.visualization.ColumnChart(document.getElementById('male-graph'));
             chart4.draw(data4, options4);
             break;
         }
-        else if(i == len - 1) {
+        else if (i == len - 1) {
             document.getElementById('male-graph').innerHTML = '<div class="noData-graph"><p>No data available</p></div>';
         }
     }
@@ -391,7 +391,7 @@ function draw_femaleUsers_chart(data) {
         value1.push(prop);
         value2.push(api_data[prop]);
     }
-    
+
     var data5 = google.visualization.arrayToDataTable([
         ['State', 'Female Migrants', { role: 'style' }],
         [value1[0], value2[0], "pink"],
@@ -406,7 +406,7 @@ function draw_femaleUsers_chart(data) {
 
     var options5 = {
         title: "Top 5 States with Highest Female registration",
-        titleTextStyle: { 
+        titleTextStyle: {
             color: "#16619c",
             fontSize: 16
         },
@@ -430,18 +430,18 @@ function draw_femaleUsers_chart(data) {
     };
 
     var len = value2.length;
-    for(var i=0;i<len;i++) {
-        if(value2[i] != 0) {
+    for (var i = 0; i < len; i++) {
+        if (value2[i] != 0) {
             // Instantiate and draw time based column chart, passing in some options.
             var chart5 = new google.visualization.ColumnChart(document.getElementById('female-graph'));
             chart5.draw(data5, options5);
             break;
         }
-        else if(i == len - 1) {
+        else if (i == len - 1) {
             document.getElementById('female-graph').innerHTML = '<div class="noData-graph"><p>No data available</p></div>';
         }
     }
-    
+
 }
 
 
@@ -449,7 +449,7 @@ function draw_femaleUsers_chart(data) {
 $(".input-transition-effect").focusout(function () {
     var $this = $(this);
     if ($(this).val() == '' || $(this).val() == "null") {
-        if(! $this.parent().parent().hasClass('custom_select-form_group')) {
+        if (!$this.parent().parent().hasClass('custom_select-form_group')) {
             $(this)
                 .removeClass("has-content")
                 .parent().addClass('error-input-wrap')
@@ -463,7 +463,7 @@ $(".input-transition-effect").focusout(function () {
 
 $("input.input-transition-effect").keyup(function () {
     if ($(this).val() == '' || $(this).val() == "null") {
-        if(! $this.parent().parent().hasClass('custom_select-form_group')) {
+        if (!$this.parent().parent().hasClass('custom_select-form_group')) {
             $(this).removeClass("has-content").parent().addClass('error-input-wrap');
         }
     }
@@ -519,137 +519,137 @@ function drawHeatMap() {
         zoom: 3
     });
     var hoveredStateId = null;
-    map.on('load', function() {
+    map.on('load', function () {
 
         map.addSource('trees', {
             type: 'geojson',
             data: 'js/data.json'
         });
-    map.addLayer({
-    id: 'trees-heat',
-    type: 'heatmap',
-    source: 'trees',
-    maxzoom: 15,
-    paint: {
-        // increase weight as Migrants count increases
-        'heatmap-weight': {
-        property: 'MigrantPopulationCount',
-        type: 'exponential',
-        stops: [
-            [1, 0],
-            [10, 1]
-        ]
-        },
-        // increase intensity as zoom level increases
-        'heatmap-intensity': {
-        stops: [
-            [11, 1],
-            [15, 3]
-        ]
-        },
-        // assign color values be applied to points depending on their density
-        'heatmap-color': [
-        'interpolate',
-        ['linear'],
-        ['heatmap-density'],
-        0, 'rgba(236,222,239,0)',
-        0.2, 'rgb(208,209,230)',
-        0.4, 'rgb(166,189,219)',
-        0.6, 'rgb(103,169,207)',
-        0.8, 'rgb(28,144,153)'
-        ],
-        // increase radius as zoom increases
-        'heatmap-radius': {
-        stops: [
-            [11, 15],
-            [15, 20]
-        ]
-        },
-        // decrease opacity to transition into the circle layer
-        'heatmap-opacity': {
-        default: 1,
-        stops: [
-            [14, 1],
-            [15, 0]
-        ]
-        },
-    }
-    }, 'waterway-label');
-    map.addLayer({
-    id: 'trees-point',
-    type: 'circle',
-    source: 'trees',
-    minzoom: 14,
-    paint: {
-        // increase the radius of the circle as the zoom level and MigrantPopulationCount value increases
-        'circle-radius': {
-        property: 'MigrantPopulationCount',
-        type: 'exponential',
-        stops: [
-            [{ zoom: 15, value: 1 }, 5],
-            [{ zoom: 15, value: 62 }, 10],
-            [{ zoom: 22, value: 1 }, 20],
-            [{ zoom: 22, value: 62 }, 50],
-        ]
-        },
-        'circle-color': {
-        property: 'MigrantPopulationCount',
-        type: 'exponential',
-        stops: [
-            [0, 'rgba(236,222,239,0)'],
-            [10, 'rgb(236,222,239)'],
-            [20, 'rgb(208,209,230)'],
-            [30, 'rgb(166,189,219)'],
-            [40, 'rgb(103,169,207)'],
-            [50, 'rgb(28,144,153)'],
-            [60, 'rgb(1,108,89)']
-        ]
-        },
-        'circle-stroke-color': 'blue',
-        'circle-stroke-width': 1,
-        'circle-opacity': {
-        stops: [
-            [14, 0],
-            [15, 1]
-        ]
-        }
-    }
-    }, 'waterway-label');
-    map.on('click', 'trees-point', function(e) {
-    new mapboxgl.Popup()
-        .setLngLat(e.features[0].geometry.coordinates)
-        .setHTML('<b>MigrantPopulationCount:</b> ' + e.features[0].properties.MigrantPopulationCount)
-        .addTo(map);	
-    });
+        map.addLayer({
+            id: 'trees-heat',
+            type: 'heatmap',
+            source: 'trees',
+            maxzoom: 15,
+            paint: {
+                // increase weight as Migrants count increases
+                'heatmap-weight': {
+                    property: 'MigrantPopulationCount',
+                    type: 'exponential',
+                    stops: [
+                        [1, 0],
+                        [10, 1]
+                    ]
+                },
+                // increase intensity as zoom level increases
+                'heatmap-intensity': {
+                    stops: [
+                        [11, 1],
+                        [15, 3]
+                    ]
+                },
+                // assign color values be applied to points depending on their density
+                'heatmap-color': [
+                    'interpolate',
+                    ['linear'],
+                    ['heatmap-density'],
+                    0, 'rgba(236,222,239,0)',
+                    0.2, 'rgb(208,209,230)',
+                    0.4, 'rgb(166,189,219)',
+                    0.6, 'rgb(103,169,207)',
+                    0.8, 'rgb(28,144,153)'
+                ],
+                // increase radius as zoom increases
+                'heatmap-radius': {
+                    stops: [
+                        [11, 15],
+                        [15, 20]
+                    ]
+                },
+                // decrease opacity to transition into the circle layer
+                'heatmap-opacity': {
+                    default: 1,
+                    stops: [
+                        [14, 1],
+                        [15, 0]
+                    ]
+                },
+            }
+        }, 'waterway-label');
+        map.addLayer({
+            id: 'trees-point',
+            type: 'circle',
+            source: 'trees',
+            minzoom: 14,
+            paint: {
+                // increase the radius of the circle as the zoom level and MigrantPopulationCount value increases
+                'circle-radius': {
+                    property: 'MigrantPopulationCount',
+                    type: 'exponential',
+                    stops: [
+                        [{ zoom: 15, value: 1 }, 5],
+                        [{ zoom: 15, value: 62 }, 10],
+                        [{ zoom: 22, value: 1 }, 20],
+                        [{ zoom: 22, value: 62 }, 50],
+                    ]
+                },
+                'circle-color': {
+                    property: 'MigrantPopulationCount',
+                    type: 'exponential',
+                    stops: [
+                        [0, 'rgba(236,222,239,0)'],
+                        [10, 'rgb(236,222,239)'],
+                        [20, 'rgb(208,209,230)'],
+                        [30, 'rgb(166,189,219)'],
+                        [40, 'rgb(103,169,207)'],
+                        [50, 'rgb(28,144,153)'],
+                        [60, 'rgb(1,108,89)']
+                    ]
+                },
+                'circle-stroke-color': 'blue',
+                'circle-stroke-width': 1,
+                'circle-opacity': {
+                    stops: [
+                        [14, 0],
+                        [15, 1]
+                    ]
+                }
+            }
+        }, 'waterway-label');
+        map.on('click', 'trees-point', function (e) {
+            new mapboxgl.Popup()
+                .setLngLat(e.features[0].geometry.coordinates)
+                .setHTML('<b>MigrantPopulationCount:</b> ' + e.features[0].properties.MigrantPopulationCount)
+                .addTo(map);
+        });
     });
 }
 
 function getGeojson() {
     var someData;
-	applyLoader(true);
+    applyLoader(true);
     $.ajax({
         method: 'GET',
         url: 'http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants/coordinates/',
-		headers: { "content-Type": "application/json", "Access-Control-Allow-Origin": "*"},
+        headers: { "content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
         success: function (data) {
             someData = data;
-            
-            
+
+
             // geojsonArr = [];
             var geojson1 = {
-                "type":"FeatureCollection",
+                "type": "FeatureCollection",
                 features: []
             };
-            for(var i in someData) {   
+            for (var i in someData) {
                 var item = someData[i];
-                geojson1.features.push({ 			
-                    "type" : "Feature",
-                    "geometry":{
-                        "type":"Point",
+                geojson1.features.push({
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
                         "coordinates": [item.longitude, item.latitude]
                     },
-                    "properties":{
-                        "MigrantPopulationCount" : item.count
+                    "properties": {
+                        "MigrantPopulationCount": item.count
                     }
                 });
             }
@@ -664,9 +664,9 @@ function getGeojson() {
             document.body.appendChild(pom);
             pom.click();
             document.body.removeChild(pom); */
-			
-			drawHeatMap();
-			applyLoader(false);
+
+            drawHeatMap();
+            applyLoader(false);
         }
     });
 
@@ -682,8 +682,8 @@ function getGeojson() {
 $.ajax({
     method: "GET",
     url: "http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants",
-    success: function(data) {
-        if(data) {
+    success: function (data) {
+        if (data) {
             init_api();
         }
     }
@@ -721,13 +721,13 @@ function getStatesAPI() {
         success: function (data) {
             createMarquee(data);
 
-            if($('.page-content-wrapper').hasClass('dashboard_page')) {
+            if ($('.page-content-wrapper').hasClass('dashboard_page')) {
                 dashboardPage_stateAPI(data);
             }
-            else if($('.page-content-wrapper').hasClass('registration_page')) {
+            else if ($('.page-content-wrapper').hasClass('registration_page')) {
                 applyLoader(false);
             }
-            else if($('.page-content-wrapper').hasClass('skills_page')) {
+            else if ($('.page-content-wrapper').hasClass('skills_page')) {
                 skillPage_stateAPI();
             }
         }
@@ -759,7 +759,7 @@ function dashboardPage_stateAPI(data) {
     $('#state_filter_api .options ul').css('box-shadow', '0px 1px 3px 1px rgba(0, 0, 0, 0.15)');
 
     // without filter graph calls
-    fetchNoFilterGraphsApiData(function() {
+    fetchNoFilterGraphsApiData(function () {
         fetchGraphsApiData('india');
     });
 }
@@ -767,8 +767,8 @@ function dashboardPage_stateAPI(data) {
 function fetchNoFilterGraphsApiData(cb) {
     var topfiveMalestates_url = 'http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants/topfivestates/male';
     var topfiveFemalestates_url = 'http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants/topfivestates/female';
-    callTopfiveStateForMaleUsersAPI(topfiveMalestates_url, function() {
-        callTopfiveStateForFemaleUsersAPI(topfiveFemalestates_url, function() {
+    callTopfiveStateForMaleUsersAPI(topfiveMalestates_url, function () {
+        callTopfiveStateForFemaleUsersAPI(topfiveFemalestates_url, function () {
             cb();
         });
     });
@@ -801,7 +801,7 @@ function fetchGraphsApiData(param) {
     var timebasedusers_url = '';
     var regModes_url = '';
     var skillBasedUsers_url = '';
-    
+
     if (param === 'india') {
         topfiveskills_url = 'http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants/skills/topfive';
         timebasedusers_url = 'http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants/graph';
@@ -815,16 +815,16 @@ function fetchGraphsApiData(param) {
         skillBasedUsers_url = 'http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants/topfiveskills/' + param;
     }
 
-    callTopfiveskillsAPI(topfiveskills_url, function(){
-        callTimebasedUsersAPI(timebasedusers_url, function() {
-            callRegmodesAPI(regModes_url, function() {
-                callSkillBasedUsersAPI(skillBasedUsers_url, function() {
+    callTopfiveskillsAPI(topfiveskills_url, function () {
+        callTimebasedUsersAPI(timebasedusers_url, function () {
+            callRegmodesAPI(regModes_url, function () {
+                callSkillBasedUsersAPI(skillBasedUsers_url, function () {
                     applyLoader(false);
                 });
             });
         });
     });
-    
+
 }
 
 function callTopfiveskillsAPI(url, cb) {
@@ -877,6 +877,7 @@ $(document).on('click', '#state_filter_api .drop-down .options ul li a', functio
     var text = $this.html();
     $this.parents('.drop-down').find('.selected a span').html(text);
     $this.parents('.drop-down').find('.options ul').hide();
+    $this.parents('.drop-down').find('.selected').removeClass('arrow-toggle');
 
     var stateName = $this.parents('.drop-down').find('.selected a span').text();
     applyLoader(true);
@@ -909,6 +910,7 @@ $(document).on('click', '#district_filter_api .drop-down .options ul li a', func
     var text = $this.html();
     $this.parents('.drop-down').find('.selected a span').html(text);
     $this.parents('.drop-down').find('.options ul').hide();
+    $this.parents('.drop-down').find('.selected').removeClass('arrow-toggle');
 
     var stateName = $('#state_filter_api .drop-down .selected a span').text();
     var districtName = $this.parents('.drop-down').find('.selected a span').text();
@@ -927,7 +929,7 @@ function skillPage_stateAPI() {
         method: 'GET',
         url: "http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants/statewise",
         success: function (data) {
-            
+
             var states_name = [];
             for (var prop in data) {
                 states_name.push(prop);
@@ -955,6 +957,7 @@ $(document).on('click', '#state_skills_filter_api .drop-down .options ul li a', 
     var text = $this.html();
     $this.parents('.drop-down').find('.selected a span').html(text);
     $this.parents('.drop-down').find('.options ul').hide();
+    $this.parents('.drop-down').find('.selected').removeClass('arrow-toggle');
 
     var stateName = $this.parents('.drop-down').find('.selected a span').text();
     applyLoader(true);
@@ -990,6 +993,7 @@ $(document).on('click', '#district_skills_filter_api .drop-down .options ul li a
     var text = $this.html();
     $this.parents('.drop-down').find('.selected a span').html(text);
     $this.parents('.drop-down').find('.options ul').hide();
+    $this.parents('.drop-down').find('.selected').removeClass('arrow-toggle');
 
     var stateName = $('#state_skills_filter_api .drop-down .selected a span').text();
     var districtName = $this.parents('.drop-down').find('.selected a span').text();
@@ -1014,28 +1018,33 @@ function fetchSkillsData(param) {
             /////////////////// skills page table section
             var i = 0;
             $('#skills_api').empty();
-            // var name_arr = [];
-            // var data_arr = [];
-            // for (var prop in data) {
-            //     name_arr.push(prop);
-            //     data_arr.push(data[prop]);
-            // }
-            // data_arr.sort();
-            // data_len = data_arr.length;
-            // function sortByValue(jsObj){
-                var sortedArray = [];
-                for(var i in data)
-                {
-                    // Push each JSON Object entry in array by [value, key]
-                    sortedArray.push([data[i], i]);
-                }
-                var x = sortedArray.sort();
-            // } 
-            
-            var data_len = x.length;
-            for(var i=0;i<data_len;i++) {
-                var y = x[i];
-                $('#skills_api').append('<tr><td>' + i + '</td><td>' + y[1] + '</td><td>' + y[0] + '</td></tr>');
+
+            var sortedArray = [];
+            for (var i in data) {
+                sortedArray.sort().push([data[i], i]);
+            }
+
+            function sortProperties(obj) {
+                // convert object into array
+                var sortable = [];
+                for (var key in obj)
+                    if (obj.hasOwnProperty(key))
+                        sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+                
+                // sort items by value
+                sortable.sort(function (a, b) {
+                    var x = a[1]
+                    y = b[1];
+                    return x > y ? -1 : x < y ? 1 : 0;
+                });
+                return sortable; // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+            }
+
+            var sortedSkills = sortProperties(data);
+            var data_len = sortedSkills.length;
+            for (var i = 0; i < data_len; i++) {
+                var y = sortedSkills[i];
+                $('#skills_api').append('<tr><td>' + (i+1) + '</td><td>' + y[0] + '</td><td>' + y[1] + '</td></tr>');
             }
             applyLoader(false);
         }
@@ -1058,28 +1067,28 @@ function applyLoader(value) {
 
 
 ////////////////////////////////POST Call - FORM SUBMIT
-$('#form_submit_btn').click(function() {
+$('#form_submit_btn').click(function () {
     var skills_selected = [];
     var skills = $('#skills_checkboxes_api input:checkbox:checked');
     var skills_count = $('#skills_checkboxes_api input:checkbox:checked').length;
-    for (var i=0;i<skills_count;i++) {
+    for (var i = 0; i < skills_count; i++) {
         skills_selected.push($(skills[i]).attr('data-value'));
     };
 
     var formData_obj = {
-        "AadharNumber":Number($('#adhaar').val()),
-        "AadharNumber":Number($('#adhaar').val()),
-        "AadharNumber":Number($('#adhaar').val()),
-        "Address":$('#address').val(),
-        "Name":$('#fullname').val(),
-        "Phone":Number($('#phone').val()),
-        "Pincode":Number($('#pincode').val()),
-        "Skill":skills_selected,
+        "AadharNumber": Number($('#adhaar').val()),
+        "AadharNumber": Number($('#adhaar').val()),
+        "AadharNumber": Number($('#adhaar').val()),
+        "Address": $('#address').val(),
+        "Name": $('#fullname').val(),
+        "Phone": Number($('#phone').val()),
+        "Pincode": Number($('#pincode').val()),
+        "Skill": skills_selected,
         "Gender": $('#gender_dropdown .selected span').text(),
         "Mode": "Web Form"
     };
-    
-    
+
+
     // $.post("http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants",
     // formData_obj,
     // function(data, status){
@@ -1089,26 +1098,26 @@ $('#form_submit_btn').click(function() {
         method: "POST",
         url: "http://ec2-3-7-57-138.ap-south-1.compute.amazonaws.com:8009/api/migrants",
         data: JSON.stringify(formData_obj),
-		headers: { "content-Type": "application/json"},
-		//headers: { "content-Type": "application/json", "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With" },
-        //contentType: 'application/json',
+        headers: { "content-Type": "application/json" },
+        //headers: { "content-Type": "application/json", "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With" },
+        //contentType: 'application/json',
         success: function (data) {
             console.log(data);
 
-			if(data.status === 401) {
-				$('.message-wrap').text('Your details has been successfully submitted.');
-			}
-			else if(data.status === 402) {
-				$('.message-wrap').text('Your details has been submitted but Adhaar verification is pending.');
-			}
-			else if(data.status === 403) {
-				$('.message-wrap').text('Your entered details already exists.');
-			}
-			else if(data.status === 404) {
-				$('.message-wrap').text('We could not proceed with your registration. Please try again.');
-			}
-			else if(data.status === 405) {
-				$('.message-wrap').text('Please enter correct Pincode and try again.');
+            if (data.status === 401) {
+                $('.message-wrap').text('Your details has been successfully submitted.');
+            }
+            else if (data.status === 402) {
+                $('.message-wrap').text('Your details has been submitted but Adhaar verification is pending.');
+            }
+            else if (data.status === 403) {
+                $('.message-wrap').text('Your entered details already exists.');
+            }
+            else if (data.status === 404) {
+                $('.message-wrap').text('We could not proceed with your registration. Please try again.');
+            }
+            else if (data.status === 405) {
+                $('.message-wrap').text('Please enter correct Pincode and try again.');
             }
             $('.message-wrap').addClass('active');
             emptyAllInputs();
@@ -1121,7 +1130,7 @@ $('#form_submit_btn').click(function() {
         $('.regForm-wrapper .input-transition-effect').val('').removeClass('has-content');
         $('#gender_dropdown .drop-down').removeClass('error-input-wrap has-content');
         $('.selected.input-transition-effect').removeClass('select-focussed arrow-toggle').find('.floated-label').removeClass('active').next('span').text('');
-        $('.regForm-wrapper .skills-wrap .checkbox').removeClass('checkbox-checked').prop("checked", false);
+        $('.regForm-wrapper .skills-wrap input[type="checkbox"]:checked').trigger('click');
     }
 
 });

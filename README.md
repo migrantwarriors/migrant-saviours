@@ -1,5 +1,5 @@
 # migrant-saviours
-This is the final code submission repository for migrant saviours team project for WiT Hackathon. All documents are kept inside docs folder including complete solution, architecture, roadmap etc. There are four projects having source code - MapBox, telegram-integration, MigrantWarriorsLibrary and Frontend.
+This is the final code submission repository for migrant saviours team project for WiT Hackathon. All documents are kept inside docs folder including complete solution, architecture, roadmap etc. There are four projects having source code - MapBox, telegram-integration, MigrantWarriorsLibrary and website_code.
 
 ## Contents
 
@@ -74,7 +74,7 @@ How to use Web for Registration?
 1. telegram-integration - Telegram Integration
 2. MapBox - MapBox code
 3. MigrantWarriorsLibrary - Backend services for migrant-saviours
-4. Frontend - Frontend Web
+4. website_code - Frontend Web
 
 ## Built with
 

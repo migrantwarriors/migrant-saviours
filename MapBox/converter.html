@@ -1,0 +1,56 @@
+<html>
+    <body style="background-color: #DDD">
+	    <table style="width: 800px">
+	            <tr>
+				    <td valign="top" style="width: 50%; height: 400px">
+                    <textarea id="output" style="width: 100%; height: 400px"></textarea>
+                </td>
+            </tr>
+		</table>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/geojson/0.5.0/geojson.min.js"></script>
+		<script>
+
+		var someData = [
+		   {latitude: 28.535517, longitude: 77.391029, "count": 40},
+		   {latitude: 25.612677, longitude: 85.158875, "count": 44},
+		   {latitude: 28.590420, longitude: 77.354210, "count": 42},
+		];
+		geojsonArr = [];
+		var geojson1 = {
+			"type":"FeatureCollection",
+			features: []
+		};
+
+		for(var i in someData) {   
+			var item = someData[i];
+			geojson1.features.push({ 			
+				"type" : "Feature",
+				"geometry":{
+					"type":"Point",
+					"coordinates": [item.longitude, item.latitude]
+				},
+				"properties":{
+					"MigrantPopulationCount" : item.count
+				}
+			});
+		}
+		document.getElementById("output").value = JSON.stringify(geojson1, null, 4);
+		var text = JSON.stringify(geojson1, null, 4);
+		//function download(filename, text) {
+		  var pom = document.createElement('a');
+		  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + 
+
+		  encodeURIComponent(text));
+		  pom.setAttribute('download', "aabc.geojson");
+
+		  pom.style.display = 'none';
+		  document.body.appendChild(pom);
+
+		  pom.click();
+
+		  document.body.removeChild(pom);
+		//}
+		//download("abc.txt",str);
+		</script>
+    </body>
+</html>

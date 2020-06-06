@@ -1,0 +1,186 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    77.391029,
+					28.535517
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 400
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					82.1458,
+					26.7730
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 44
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					77.354210,
+					28.590420        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 42
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					78.0081,
+					27.1767        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 100
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					78.0081,
+					27.1767        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 100
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					84.902,
+					25.7373        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 59
+            }
+        },
+       {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					88.1047,
+					23.8101        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 190
+            }
+        },
+       {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					85.158875,
+					25.612677        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 59
+            }
+        },
+       {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					71.1924,
+					22.2587        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 10
+            }
+        },
+       {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					84.7622,
+					26.5588        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 100
+            }
+        },
+       {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					84.92,
+					25.9221        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 100
+            }
+        },
+       {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					75.7139,
+					19.7515        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 100
+            }
+        },
+       {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+					84.8827,
+					26.1361        
+
+                ]
+            },
+            "properties": {
+                "MigrantPopulationCount": 100
+            }
+        }
+    ]
+}

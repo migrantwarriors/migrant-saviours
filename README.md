@@ -32,7 +32,7 @@ A technologically enabled solution to collect, save and prepare a data bank of t
 
 ## Demo video
 
-[![Watch the video] https://youtu.be/JDTYbiZbmWA
+[![Watch the video] https://youtu.be/H3SNN4mU6aM
 
 ## The architecture
 

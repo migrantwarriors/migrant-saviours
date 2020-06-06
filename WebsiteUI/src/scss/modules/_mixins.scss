@@ -1,0 +1,46 @@
+@mixin border-radius($args) {
+    border-radius: $args;
+    -webkit-border-radius: $args;
+    -moz-border-radius: $args;
+    -ms-border-radius: $args;
+}
+
+@mixin box-shadow($args) {
+    box-shadow: $args;
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    -ms-box-shadow: $args;
+}
+
+@mixin screen($size) {
+
+	$desktop       : "(min-width: 768px)";
+	$desktop-md	   : "(min-width: 992px)";
+	$tablet-lg     : "(min-width: 768px) and (max-width: 991px)";
+	$mobile-xs     : "(max-width: 475px)";
+	
+	@if $size==desktop {
+		@media only screen and #{$desktop} {
+			@content;
+		}
+	}
+	
+	@else if $size==desktop-md {
+		@media only screen and #{$desktop-md} {
+			@content;
+		}
+	}
+	
+	@else if $size==tablet-lg {
+		@media only screen and #{$tablet-lg} {
+			@content;
+		}
+	}
+	
+	@else if $size==mobile-xs {
+		@media only screen and #{$mobile-xs} {
+			@content;
+		}
+	}
+
+}

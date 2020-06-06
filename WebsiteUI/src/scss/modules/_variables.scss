@@ -1,0 +1,44 @@
+/************ INDEX *************/
+/*
+    1.0 Typography
+    2.0 Colors
+    3.0 Breakpoints
+*/
+/************ INDEX *************/
+
+
+/************ 1.0 Typography starts here *************/
+$regular-font: 'robotoregular';
+$medium-font: 'robotomedium';
+$bold-font: 'robotobold';
+$light-font: 'robotolight';
+
+$base-font-family: 'robotoregular';
+$base-font-size: 16px; //Equivalent to 1rem
+$base-font-weight: 400;
+/************ 1.0 Typography ends here *************/
+
+
+/************ 2.0 Colors starts here *************/
+$body-bg-color: #fff;
+$base-text-color: #545454;
+$header-bg-color: #d5e7ec;
+$input-border-color: #c3c3c3;
+$brand-color: #16619c;
+$brand-color-light: lighten($brand-color, 50%);
+$section-border-color: #ccc;
+$label-color: #888686;
+
+$widget-blue-gradient: linear-gradient(to bottom,  #a5c9fd 0%,#bde5fc 100%);
+$widget-green-gradient: linear-gradient(to bottom,  #9be89c 0%,#cdf97d 100%);
+$widget-pink-gradient: linear-gradient(to bottom,  #fe8683 0%,#ff9d9b 100%);
+$widget-orange-gradient: linear-gradient(to bottom,  #f6ce68 0%,#fda682 100%);
+/************ 2.0 Colors ends here *************/
+
+
+/************ 3.0 Breakpoints starts here *************/
+
+/************ 3.0 Breakpoints ends here *************/
+
+
+$input-border-radius: 4px;

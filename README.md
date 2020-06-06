@@ -44,7 +44,7 @@ Please check: docs/migrantsaviours-solution-document.docx
 
 ## Project roadmap
 
-Please check: docs/roadmap.jpg
+Please check: docs/Solution-Roadmap.png
 
 ## Live demo
 
